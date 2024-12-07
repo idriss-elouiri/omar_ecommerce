@@ -6,6 +6,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: ["sortablejs"],
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"], // Group large dependencies into a separate chunk
+        },
+      },
     },
   },
 });
