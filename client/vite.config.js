@@ -1,16 +1,12 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-// https://vitejs.dev/config/
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      external: ["sortablejs"],
-      output: {
-        manualChunks: {
-          vendor: ["react", "react-dom"], // Group large dependencies into a separate chunk
-        },
-      },
-    },
+  optimizeDeps: {
+    exclude: ['flowbite-react'],
+  },
+  ssr: {
+    noExternal: ['flowbite-react'],
   },
 });
